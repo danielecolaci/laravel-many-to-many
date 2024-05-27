@@ -1,9 +1,11 @@
 @extends('layouts.admin')
 
+@section('title', 'Manage Types')
+
 @section('content')
     <div class="container">
         <h1>Types</h1>
-        <a href="{{ route('admin.types.create') }}" class="btn btn-info text-white mb-3">Create New Type</a>
+        <a href="{{ route('admin.types.create') }}" class="btn btn-info text-white my-3">Create New Type</a>
 
         <table class="table">
             <thead>

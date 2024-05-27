@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Edit Technology')
+
 @section('content')
     <div class="container">
         <h1>Edit Technology</h1>

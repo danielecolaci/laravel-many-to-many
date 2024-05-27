@@ -1,5 +1,7 @@
 @extends('layouts.admin')
 
+@section('title', 'Create Type')
+
 @section('content')
     <div class="container">
         <h1>Create New Type</h1>
