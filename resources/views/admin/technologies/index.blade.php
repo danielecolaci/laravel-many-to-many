@@ -21,13 +21,35 @@
                         <td>
                             <a href="{{ route('admin.technologies.edit', $technology->id) }}"
                                 class="btn btn-sm btn-info text-white">Edit</a>
-                            <form action="{{ route('admin.technologies.destroy', $technology->id) }}" method="POST"
-                                class="d-inline">
-                                @csrf
-                                @method('DELETE')
-                                <button technology="submit" class="btn btn-sm btn-danger"
-                                    onclick="return confirm('Are you sure you want to delete this technology?')">Delete</button>
-                            </form>
+                            <button type="button" class="btn btn-sm btn-danger" data-bs-toggle="modal"
+                                data-bs-target="#deleteModal-{{ $technology->id }}">Delete</button>
+
+                            <div class="modal fade" id="deleteModal-{{ $technology->id }}" tabindex="-1"
+                                aria-labelledby="deleteModalLabel-{{ $technology->id }}" aria-hidden="true">
+                                <div class="modal-dialog modal-dialog-scrollable modal-dialog-centered modal-sm">
+                                    <div class="modal-content">
+                                        <div class="modal-header">
+                                            <h5 class="modal-title" id="deleteModalLabel-{{ $technology->id }}">Confirm
+                                                Delete</h5>
+                                            <button type="button" class="btn-close" data-bs-dismiss="modal"
+                                                aria-label="Close"></button>
+                                        </div>
+                                        <div class="modal-body">
+                                            Are you sure you want to delete "{{ $technology->name }}"?
+                                        </div>
+                                        <div class="modal-footer">
+                                            <button type="button" class="btn btn-secondary"
+                                                data-bs-dismiss="modal">Cancel</button>
+                                            <form action="{{ route('admin.technologies.destroy', $technology->id) }}"
+                                                method="POST">
+                                                @csrf
+                                                @method('DELETE')
+                                                <button type="submit" class="btn btn-danger">Delete</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </div>
+                            </div>
                         </td>
                     </tr>
                 @empty
