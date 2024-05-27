@@ -22,6 +22,13 @@
                         {{ $project->type ? $project->type->name : 'Uncategorized' }}
                     </div>
                     <p class="card-text">{{ $project->description }}</p>
+                    <p><b>Technologies: </b>
+                        @forelse ($project->technologies as $technology)
+                            {{ $technology->name }}
+                        @empty
+                            There are no technologies linked
+                        @endforelse
+                    </p>
                     <button class="btn btn-outline-dark"><a href="{{ $project->url_code }}"></a>Code</button>
                     <button class="btn btn-outline-dark"><a href="{{ $project->url_web }}"></a>Web</button>
                 </div>
