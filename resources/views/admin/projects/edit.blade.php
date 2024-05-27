@@ -85,6 +85,33 @@
             </div>
 
             <div class="mb-3">
+                <label for="technologies" class="form-label">Technologies</label>
+                <div class="mb-3 d-flex gap-4">
+                    @foreach ($technologies as $technology)
+                        <div class="form-check">
+                            @if ($errors->any())
+                                <input name="technologies[]" class="form-check-input" type="checkbox"
+                                    value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
+                                    {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
+                            @else
+                                <input name="technologies[]" class="form-check-input" type="checkbox"
+                                    value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
+                                    {{ $project->technologies->contains($technology->id) ? 'checked' : '' }} />
+                            @endif
+                            <label class="form-check-label" for="technology-{{ $technology->id }}">
+                                {{ $technology->name }}
+                            </label>
+                        </div>
+                    @endforeach
+                </div>
+                @error('technologies')
+                    <div class="text-danger">
+                        {{ $message }}
+                    </div>
+                @enderror
+            </div>
+
+            <div class="mb-3">
                 <label for="url_code" class="form-label">URL Code</label>
                 <input type="text" class="form-control @error('url_code') is-invalid @enderror" name="url_code"
                     id="url_code" aria-describedby="urlCodeHelper" placeholder="Enter URL for code"

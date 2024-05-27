@@ -61,6 +61,11 @@
                     @endforeach
                 </select>
                 <a href="{{ route('admin.types.index') }}" class="btn btn-info text-white mt-2">Manage Types</a>
+                @error('image')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="mb-3">
@@ -88,6 +93,11 @@
                         </div>
                     @endforeach
                 </div>
+                @error('technologies')
+                    <div class="text-danger py-2">
+                        {{ $message }}
+                    </div>
+                @enderror
             </div>
 
             <div class="mb-3">
