@@ -11,6 +11,11 @@ class Technology extends Model
 {
     use HasFactory;
 
+    protected $fillable = [
+        'name',
+        'slug',
+    ];
+    
     /**
      * The roles that belong to the Technology
      *

@@ -1,10 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\Admin;
 
 use App\Models\Technology;
 use App\Http\Requests\StoreTechnologyRequest;
 use App\Http\Requests\UpdateTechnologyRequest;
+use Illuminate\Support\Str;
+use App\Http\Controllers\Controller;
 
 class TechnologyController extends Controller
 {
@@ -13,7 +15,8 @@ class TechnologyController extends Controller
      */
     public function index()
     {
-        //
+        $technologies = Technology::all();
+        return view('admin.technologies.index', compact('technologies'));
     }
 
     /**
@@ -21,7 +24,7 @@ class TechnologyController extends Controller
      */
     public function create()
     {
-        //
+        return view('admin.technologies.create');
     }
 
     /**
@@ -29,7 +32,12 @@ class TechnologyController extends Controller
      */
     public function store(StoreTechnologyRequest $request)
     {
-        //
+        $validated = $request->validated();
+        $validated['slug'] = Str::slug($validated['name']);
+
+        Technology::create($validated);
+
+        return redirect()->route('admin.technologies.index')->with('message', 'Technology created successfully.');
     }
 
     /**
@@ -45,7 +53,7 @@ class TechnologyController extends Controller
      */
     public function edit(Technology $technology)
     {
-        //
+        return view('admin.technologies.edit', compact('technology'));
     }
 
     /**
@@ -53,7 +61,11 @@ class TechnologyController extends Controller
      */
     public function update(UpdateTechnologyRequest $request, Technology $technology)
     {
-        //
+        $validated = $request->validated();
+
+        $technology->update($validated);
+
+        return redirect()->route('admin.technologies.index')->with('message', 'Technology updated successfully.');
     }
 
     /**
@@ -61,6 +73,7 @@ class TechnologyController extends Controller
      */
     public function destroy(Technology $technology)
     {
-        //
+        $technology->delete();
+        return redirect()->route('admin.technologies.index')->with('message', 'Technology deleted successfully.');
     }
 }

@@ -109,6 +109,9 @@
                         {{ $message }}
                     </div>
                 @enderror
+
+                <a href="{{ route('admin.technologies.index') }}" class="btn btn-info text-white mt-2">Manage
+                    Technologies</a>
             </div>
 
             <div class="mb-3">
