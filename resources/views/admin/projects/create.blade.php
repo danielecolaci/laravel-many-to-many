@@ -82,23 +82,24 @@
 
             <div class="mb-3">
                 <label for="technologies" class="form-label">Technologies</label>
-                <div class="mb-3 d-flex gap-4">
+                <br>
+                <div class="mb-3 btn-group" role="group" aria-label="Technologies">
                     @foreach ($technologies as $technology)
-                        <div class="form-check">
-                            <input name="technologies[]" class="form-check-input" type="checkbox"
-                                value="{{ $technology->id }}" id="technology-{{ $technology->id }}" />
-                            <label class="form-check-label" for="technology-{{ $technology->id }}">
-                                {{ $technology->name }}
-                            </label>
-                        </div>
+                        <input name="technologies[]" type="checkbox" class="btn-check"
+                            id="technology-{{ $technology->id }}" value="{{ $technology->id }}" />
+                        <label class="btn btn-outline-info" for="technology-{{ $technology->id }}">
+                            {{ $technology->name }}
+                        </label>
                     @endforeach
                 </div>
+
                 @error('technologies')
                     <div class="text-danger py-2">
                         {{ $message }}
                     </div>
                 @enderror
 
+                <br>
                 <a href="{{ route('admin.technologies.index') }}" class="btn btn-info text-white mt-2">Manage
                     Technologies</a>
             </div>

@@ -86,22 +86,17 @@
 
             <div class="mb-3">
                 <label for="technologies" class="form-label">Technologies</label>
-                <div class="mb-3 d-flex gap-4">
+                <br>
+                <div class="mb-3 btn-group" role="group" aria-label="Technologies">
                     @foreach ($technologies as $technology)
-                        <div class="form-check">
-                            @if ($errors->any())
-                                <input name="technologies[]" class="form-check-input" type="checkbox"
-                                    value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
-                                    {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }} />
-                            @else
-                                <input name="technologies[]" class="form-check-input" type="checkbox"
-                                    value="{{ $technology->id }}" id="technology-{{ $technology->id }}"
-                                    {{ $project->technologies->contains($technology->id) ? 'checked' : '' }} />
-                            @endif
-                            <label class="form-check-label" for="technology-{{ $technology->id }}">
-                                {{ $technology->name }}
-                            </label>
-                        </div>
+                        <input type="checkbox" class="btn-check" name="technologies[]"
+                            id="technology-{{ $technology->id }}" value="{{ $technology->id }}" autocomplete="off"
+                            @if ($errors->any()) {{ in_array($technology->id, old('technologies', [])) ? 'checked' : '' }}
+
+                            @else {{ $project->technologies->contains($technology->id) ? 'checked' : '' }} @endif>
+                        <label class="btn btn-outline-info" for="technology-{{ $technology->id }}">
+                            {{ $technology->name }}
+                        </label>
                     @endforeach
                 </div>
                 @error('technologies')
@@ -110,6 +105,7 @@
                     </div>
                 @enderror
 
+                <br>
                 <a href="{{ route('admin.technologies.index') }}" class="btn btn-info text-white mt-2">Manage
                     Technologies</a>
             </div>
