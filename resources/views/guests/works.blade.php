@@ -33,5 +33,7 @@
                 </div>
             @endforeach
         </div>
+        <a class="btn btn-info text-white my-5 position-relative start-50 translate-middle btn-lg" href="#nav"><i
+                class="fa-solid fa-arrow-up"></i></a>
     </div>
 @endsection
