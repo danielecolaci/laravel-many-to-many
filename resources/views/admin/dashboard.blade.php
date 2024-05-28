@@ -20,9 +20,15 @@
                         @endif
 
                         {{ __('You are logged in!') }}
-                        <br>
-                        <a class="btn btn-info my-5 btn-lg text-white" href="{{ url('/admin/projects') }}">Manage
-                            Projects</a>
+
+                        <div class="d-flex justify-content-evenly my-5">
+                            <a class="btn btn-info btn-lg text-white" href="{{ url('/admin/projects') }}">Manage
+                                Projects</a>
+                            <a class="btn btn-info btn-lg text-white" href="{{ route('admin.types.index') }}">Manage
+                                Types</a>
+                            <a class="btn btn-info btn-lg text-white" href="{{ route('admin.technologies.index') }}">Manage
+                                Technologies</a>
+                        </div>
                     </div>
                 </div>
             </div>

@@ -100,7 +100,7 @@
                 @enderror
 
                 <br>
-                <a href="{{ route('admin.technologies.index') }}" class="btn btn-info text-white mt-2">Manage
+                <a href="{{ route('admin.technologies.index') }}" class="btn btn-info text-white">Manage
                     Technologies</a>
             </div>
 
