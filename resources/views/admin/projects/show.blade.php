@@ -29,8 +29,8 @@
                             There are no technologies linked
                         @endforelse
                     </p>
-                    <button class="btn btn-outline-dark"><a href="{{ $project->url_code }}"></a>Code</button>
-                    <button class="btn btn-outline-dark"><a href="{{ $project->url_web }}"></a>Web</button>
+                    <a class="btn btn-outline-dark" href="{{ $project->url_code }}">Code</a>
+                    <a class="btn btn-outline-dark" href="{{ $project->url_web }}">Web</a>
                 </div>
             </div>
 

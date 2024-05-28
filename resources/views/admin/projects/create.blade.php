@@ -15,7 +15,7 @@
             <div class="mb-3">
                 <label for="title" class="form-label">Title</label>
                 <input type="text" class="form-control @error('title') is-invalid @enderror" name="title" id="title"
-                    aria-describedby="titleHelper" placeholder="Enter title" value="{{ old('title') }}" />
+                    aria-describedby="titleHelper" placeholder="Enter title" />
                 <small id="titleHelper" class="form-text text-muted">Enter the title for this project</small>
                 @error('title')
                     <div class="text-danger py-2">
@@ -40,9 +40,8 @@
             <div class="mb-3">
                 <label for="image" class="form-label">Image</label>
                 <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
-                    id="image" aria-describedby="imageHelper" placeholder="Enter image URL"
-                    value="{{ old('image') }}" />
-                <small id="imageHelper" class="form-text text-muted">Enter the URL for the image of this project</small>
+                    id="image" aria-describedby="imageHelper" value="{{ old('image') }}" />
+                <small id="imageHelper" class="form-text text-muted">Upload the image of this project</small>
                 @error('image')
                     <div class="text-danger py-2">
                         {{ $message }}
@@ -52,16 +51,17 @@
 
             <div class="mb-3">
                 <label for="type_id" class="form-label">Type</label>
-                <select class="form-select" name="type_id" id="type_id">
+                <select class="form-select @error('type_id') is-invalid @enderror" name="type_id" id="type_id">
                     <option selected disabled>Select a Category</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                        <option value="{{ $type->id }}"
+                            {{ ($type->id == old('type_id')) == $type->id ? 'selected' : '' }}>
                             {{ $type->name }}
                         </option>
                     @endforeach
                 </select>
                 <a href="{{ route('admin.types.index') }}" class="btn btn-info text-white mt-2">Manage Types</a>
-                @error('image')
+                @error('type')
                     <div class="text-danger py-2">
                         {{ $message }}
                     </div>

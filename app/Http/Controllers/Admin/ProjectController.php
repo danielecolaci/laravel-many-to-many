@@ -83,8 +83,8 @@ class ProjectController extends Controller
 
         if ($request->has('image')) {
 
-            if ($post->image) {
-                Storage::delete($post->image);
+            if ($project->image) {
+                Storage::delete($project->image);
             }
 
             $image_path = Storage::put('uploads', $validated['image']);

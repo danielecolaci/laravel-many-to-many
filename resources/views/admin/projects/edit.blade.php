@@ -48,9 +48,8 @@
                 <div class="mb-3">
                     <label for="image" class="form-label">Image</label>
                     <input type="file" class="form-control @error('image') is-invalid @enderror" name="image"
-                        id="image" aria-describedby="imageHelper" placeholder="Enter image URL"
-                        value="{{ $project->image }}" />
-                    <small id="imageHelper" class="form-text text-muted">Enter the URL for the image of this project</small>
+                        id="image" aria-describedby="imageHelper" />
+                    <small id="imageHelper" class="form-text text-muted">Upload the image of this project</small>
                     @error('image')
                         <div class="text-danger py-2">
                             {{ $message }}
@@ -64,7 +63,8 @@
                 <select class="form-select" name="type_id" id="type_id">
                     <option selected disabled>Select a Category</option>
                     @foreach ($types as $type)
-                        <option value="{{ $type->id }}" {{ $type->id == old('type_id') ? 'selected' : '' }}>
+                        <option value="{{ $type->id }}"
+                            {{ $type->id == old('type_id', $project->type_id) ? 'selected' : '' }}>
                             {{ $type->name }}
                         </option>
                     @endforeach
@@ -75,7 +75,7 @@
             <div class="mb-3">
                 <label for="date" class="form-label">Date</label>
                 <input type="date" class="form-control @error('date') is-invalid @enderror" name="date" id="date"
-                    aria-describedby="dateHelper" value="{{ old('date') }}" />
+                    aria-describedby="dateHelper" value="{{ old('date', $project->date) }}" />
                 <small id="dateHelper" class="form-text text-muted">Enter the date of this project</small>
                 @error('date')
                     <div class="text-danger py-2">

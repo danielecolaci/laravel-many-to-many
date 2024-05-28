@@ -22,10 +22,8 @@
                                         {{ $project->type ? $project->type->name : 'Uncategorized' }}
                                     </div>
                                     <p class="card-text">{{ $project->description }}</p>
-                                    <button class="btn btn-outline-dark btn-sm"><a
-                                            href="{{ $project->url_code }}"></a>Code</button>
-                                    <button class="btn btn-outline-dark btn-sm"><a
-                                            href="{{ $project->url_web }}"></a>Web</button>
+                                    <a class="btn btn-outline-dark btn-sm" href="{{ $project->url_code }}">Code</a>
+                                    <a class="btn btn-outline-dark btn-sm" href="{{ $project->url_web }}">Web</a>
                                 </div>
                             </div>
                         </div>
