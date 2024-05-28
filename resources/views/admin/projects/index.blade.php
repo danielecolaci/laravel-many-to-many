@@ -88,6 +88,8 @@
                     </div>
                 @endforelse
             </div>
+            <button class="btn btn-info text-white my-5 w-25 position-relative start-50 translate-middle"
+                onclick="history.back()">Back</button>
         </div>
     </section>
 @endsection
